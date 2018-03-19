@@ -14,9 +14,25 @@ function FoundItemsDirective() {
 		scope: {
 			found: '<',
 			onRemove: '&'
-		}
+		},
+		controller: FoundItemsDirectiveController,
+		controllerAs: 'list',
+		bindToController: true
 	};
 	return ddo;
+}
+
+
+function FoundItemsDirectiveController() {
+	var list = this;
+
+	list.noFound = function () {
+		if(list.found && list.found.length === 0) {
+			return true;
+		}
+
+		return false;
+	};
 }
 
 
@@ -35,7 +51,8 @@ function NarrowItDownController(MenuSearchService) {
 		  });
 		}
 		else {
-			alert("No search term entered");
+			//alert("No search term entered");
+			list.found = [];
 		};
 	};
 	
