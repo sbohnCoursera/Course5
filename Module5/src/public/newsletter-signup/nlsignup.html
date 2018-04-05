@@ -1,0 +1,72 @@
+<div class="container">
+    <fieldset>
+        <legend>Newsletter Sign Up</legend>
+        <form name='nlSignUpForm' novalidate>
+          <input type="text" name="firstname" placeholder="First Name"
+          ng-model="nlSignUp.user.firstname"
+          required
+          ng-maxlength="15">
+          <span ng-if="nlSignUpForm.firstname.$error.required">
+            First name is a required field.
+          </span>
+          <span ng-if="nlSignUpForm.firstname.$error.maxlength && nlSignUpForm.firstname.$touched">
+              First name cannot be greater than 15 characters
+          </span>
+          <br>
+
+          <input type="text" name="lastname" placeholder="Last Name"
+          ng-model="nlSignUp.user.lastname"
+          required
+          ng-maxlength="15">
+          <span ng-if="nlSignUpForm.lastname.$error.required">
+            Last name is a required field.
+          </span>
+          <span ng-if="nlSignUpForm.lastname.$error.maxlength && nlSignUpForm.lastname.$touched">
+              Last name cannot be greater than 15 characters.
+          </span>
+          <br>
+
+          <input type="email" name="email" placeholder="Email Address"
+            ng-model="nlSignUp.user.email"
+            required>
+          <span ng-if="nlSignUpForm.email.$error.required">
+            Email address is a required field.
+          </span>
+          <span ng-if="nlSignUpForm.email.$invalid && nlSignUpForm.email.$touched">
+            Email address must be a valid format (user@email.com).
+          </span>
+          <br>
+
+          <input type="text" name="phone" placeholder="Phone ###-###-####"
+          ng-model="nlSignUp.user.phone"
+          pattern="(\d{3})-(\d{3})-(\d{4})">
+          <span ng-if="nlSignUpForm.phone.$invalid && nlSignUpForm.phone.$touched">
+            Phone number must use format ###-###-####.
+          </span>
+          <br>
+
+          <input type="text" name="menuitem" placeholder="Favorite Menu Item #"
+          ng-model="nlSignUp.user.menuitem"
+          required></td>
+          <!-- <span ng-if="nlSignUpForm.menuitem.$invalid && nlSignUpForm.menuitem.$touched"> -->
+          <span ng-if="nlSignUpForm.menuitem.$error.required">
+            Must enter a menu item number
+          </span>
+          <br>
+
+          <button
+            ng-disabled="nlSignUpForm.$invalid"
+            ng-click="nlSignUp.submit()">Submit
+          </button>
+  
+
+          <span ng-if="nlSignUp.status === 200">
+              <br>Your information has been saved. {{error}}
+          </span>
+          <span ng-if="nlSignUp.status === 500">
+              <br>No such menu number exists. 
+          </span>
+        </form>
+      </fieldset>
+
+  </div>

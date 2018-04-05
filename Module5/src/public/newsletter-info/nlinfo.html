@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>Patron Information</h2>
+    <div ng-if="nlInfoCtrl.nlInfo">
+        Name: {{nlInfoCtrl.nlInfo.user.firstname}} {{nlInfoCtrl.nlInfo.user.lastname}}<br><br>
+        Email: {{nlInfoCtrl.nlInfo.user.email}}<br><br>
+        Phone: {{nlInfoCtrl.nlInfo.user.phone}}<br><br>
+        {{nlInfoCtrl.nlInfo.data.name}} - {{nlInfoCtrl.nlInfo.data.description}}
+        <br>
+        <img width="250" height="150" ng-src="{{nlInfoCtrl.basePath}}/images/{{nlInfoCtrl.nlInfo.data.short_name}}.jpg" alt="{{nlInfoCtrl.nlInfo.data.name}}">
+        <br>
+    </div>
+    <div ng-if="!nlInfoCtrl.nlInfo">
+        Not Signed Up Yet. <a ui-sref="public.nlsignup"> Sign up Now!</a>
+    </div>
+</div>
